@@ -83,6 +83,17 @@
   }
   blockquote cite{display:block; margin-top:10px; font-family:'Poppins',sans-serif; font-style:normal; font-size:.76rem; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-soft);}
 
+  /* ---------- Recognition ---------- */
+  .recognition{padding:88px 0; background:var(--night-deep); border-top:1px solid rgba(243,236,222,.08); border-bottom:1px solid rgba(243,236,222,.08);}
+  .recognition .wrap{display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:center;}
+  .recognition-badge{display:flex; align-items:center; justify-content:center; padding:28px;}
+  .recognition-badge img{width:100%; max-width:360px;}
+  .recognition-copy p.serif{font-size:1.05rem; margin-bottom:8px;}
+  .recognition-copy h2.serif{font-size:1.9rem; margin-bottom:16px;}
+  .recognition-copy p{color:var(--muted); margin:0 0 14px; max-width:56ch;}
+  .recognition-meta{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:18px; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase; color:var(--gold-soft);}
+  .recognition-meta span{display:inline-flex; align-items:center; gap:6px;}
+
   /* ---------- Ecosystem ---------- */
   .ecosystem{padding:96px 0; background:var(--night-deep);}
   .eco-head{text-align:center; max-width:600px; margin:0 auto 48px;}
@@ -150,7 +161,7 @@
   @media (max-width:900px){
     nav.links{display:none;}
     .facts .wrap{grid-template-columns:1fr 1fr; row-gap:28px;}
-    .story .wrap, .style-section .wrap{grid-template-columns:1fr; gap:36px;}
+    .story .wrap, .style-section .wrap, .recognition .wrap{grid-template-columns:1fr; gap:36px;}
     .eco-grid{grid-template-columns:1fr 1fr; row-gap:20px;}
     .press-grid{grid-template-columns:1fr;}
     .gallery-grid{grid-template-columns:1fr 1fr;}
@@ -165,6 +176,7 @@
     <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-tight.png" alt="Lengo Organics"></a>
     <nav class="links">
       <a href="#story">Her Story</a>
+      <a href="#recognition">Recognition</a>
       <a href="#ecosystem">The Ecosystem</a>
       <a href="#press">Press</a>
       <a href="index.html">Lengo Home</a>
@@ -223,6 +235,26 @@
           "He only gave it to me because he could see the vision I had. I had to prove to him that it was going to work."
           <cite>Samantha Okullo, on her father's early support — SatisFashion Uganda</cite>
         </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RECOGNITION ================= -->
+  <section class="recognition reveal" id="recognition">
+    <div class="wrap">
+      <div class="recognition-badge">
+        <img src="assets/africa100-badge.png" alt="Africa 100 League of Exceptionals badge">
+      </div>
+      <div class="recognition-copy">
+        <p class="serif">Recognition</p>
+        <h2 class="serif">Named to the Africa 100 League of Exceptionals.</h2>
+        <p>In April 2025, Samantha was honoured among the 100 Most Influential Young Africans at the Africa 100 League of Exceptionals, hosted by the Pan-African Youth Leadership Foundation at the British Council in Accra, Ghana.</p>
+        <p>The recognition follows years of building Uganda's beauty sector from the ground up — training and employing over 400 young women across her ventures, and growing So Chic Custom Wigs into a sustainability-minded initiative recognised by Airtel Uganda's Young Hustlers Innovation Program for recycling hair extensions into new units.</p>
+        <p>She's also been nominated for the Abryanz Style &amp; Fashion Awards, the Hair &amp; Beauty Awards and the FOYA Digitally Fit Awards, and was featured in Uganda Airlines' <em>Ngaali</em> in-flight magazine in September 2024 as one of Uganda's Top 5 Female Beauty Entrepreneurs.</p>
+        <div class="recognition-meta">
+          <span>Africa 100 · League of Exceptionals 2025</span>
+          <span>British Council, Accra, Ghana</span>
+        </div>
       </div>
     </div>
   </section>
