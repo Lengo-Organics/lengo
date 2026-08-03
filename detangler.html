@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detangler Root Hair Spray | Lengo Organics</title>
+<meta name="description" content="Lengo Organics Detangler Root Hair Spray — a lightweight, oil-rich mist of shea oil, castor oil, mango butter and guava leaf extract that softens roots and eases every knot before styling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500;1,600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     This product page intentionally breaks from the site's
+     pink/gold poster palette (and from the Repair Mask page's
+     dusk-lake palette) — it's built around the actual ad shoot
+     photography for the Detangler: golden-hour savanna, wind-
+     blown hair, fine mist backlit by the sun. Palette leans warm
+     amber/terracotta with a sage accent pulled from the product
+     label. Same type pairing (Cormorant Garamond italic +
+     Poppins) for brand continuity.
+     ============================================================ */
+  :root{
+    --dusk:#241A12;
+    --dusk-deep:#160F0A;
+    --gold:#E3A64B;
+    --gold-soft:#F3C87E;
+    --sage:#93A66E;
+    --cream:#F8EFDE;
+    --muted:rgba(248,239,222,.72);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--dusk); color:var(--cream); font-family:'Poppins',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased;}
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .serif{font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; color:var(--gold-soft);}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease;}
+    .reveal.is-visible{opacity:1; transform:translateY(0);}
+  }
+
+  header{position:sticky; top:0; z-index:50; background:rgba(36,26,18,.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(248,239,222,.1);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1180px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; color:var(--cream);}
+  .brand-mark{height:30px; filter:brightness(0) invert(1);}
+  nav.links{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+  nav.links a{text-decoration:none; font-size:.85rem; font-weight:500; color:var(--muted);}
+  nav.links a:hover{color:var(--gold-soft);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:13px 28px;
+    background:var(--gold); color:var(--dusk-deep); text-decoration:none;
+    font-weight:700; font-size:.85rem; letter-spacing:.02em; text-transform:uppercase;
+    border:none; border-radius:999px; box-shadow:0 16px 30px -12px rgba(227,166,75,.5);
+    transition:transform .18s ease, background .18s ease;
+  }
+  .btn:hover{background:var(--gold-soft); transform:translateY(-2px);}
+  .btn.ghost{background:transparent; color:var(--cream); border:1px solid rgba(248,239,222,.4); box-shadow:none;}
+  .btn.ghost:hover{background:rgba(248,239,222,.1);}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative; min-height:82vh; display:flex; align-items:flex-end; overflow:hidden;}
+  .hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 22%;}
+  .hero::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(22,15,10,.1) 0%, rgba(22,15,10,.5) 55%, rgba(22,15,10,.92) 100%);
+  }
+  .hero-copy{position:relative; z-index:1; padding:64px 0 72px; width:100%;}
+  .hero-copy p.eyebrow{color:var(--gold-soft); font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600; margin:0 0 12px;}
+  .hero-copy h1{font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; font-size:clamp(2.2rem,5vw,3.6rem); max-width:16ch; margin:0 0 18px; color:var(--cream);}
+  .hero-copy p.lede{max-width:48ch; color:var(--muted); font-size:1.02rem; margin:0 0 30px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  /* ---------- Ritual / story split ---------- */
+  .ritual{padding:100px 0; background:var(--dusk);}
+  .ritual .wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .ritual-photo{border-radius:6px; overflow:hidden; aspect-ratio:4/5;}
+  .ritual-photo img{width:100%; height:100%; object-fit:cover; object-position:center 20%;}
+  .ritual h2.serif{font-size:2.1rem; margin-bottom:18px;}
+  .ritual p{color:var(--muted); margin:0 0 16px; max-width:52ch;}
+
+  /* ---------- Full-bleed break ---------- */
+  .break{position:relative; height:56vw; max-height:640px; overflow:hidden;}
+  .break img{width:100%; height:100%; object-fit:cover;}
+  .break::after{content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(22,15,10,.6), transparent 40%);}
+  .break-caption{position:absolute; left:0; right:0; bottom:36px; text-align:center; z-index:1;}
+  .break-caption p.serif{font-size:1.6rem; max-width:24ch; margin:0 auto;}
+
+  /* ---------- Ingredients ---------- */
+  .ingredients{padding:100px 0; background:var(--dusk-deep);}
+  .ingredients .wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .ing-photo{border-radius:6px; overflow:hidden; aspect-ratio:4/3;}
+  .ing-photo img{width:100%; height:100%; object-fit:cover;}
+  .ingredients h2.serif{font-size:2rem; margin-bottom:16px;}
+  .ingredients p{color:var(--muted); margin:0 0 20px; max-width:52ch;}
+  .tag-list{display:flex; flex-wrap:wrap; gap:10px; list-style:none; margin:0; padding:0;}
+  .tag-list li{
+    padding:9px 16px; border-radius:999px; border:1px solid rgba(147,166,110,.5);
+    color:var(--sage); font-size:.82rem; font-weight:500;
+  }
+  .formula-note{margin-top:22px; font-size:.85rem; color:var(--muted); font-style:italic;}
+
+  /* ---------- How to use ---------- */
+  .ritual-steps{padding:96px 0; background:var(--dusk);}
+  .steps-head{text-align:center; max-width:520px; margin:0 auto 52px;}
+  .steps-head h2.serif{font-size:2rem;}
+  .steps-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .step-card{background:rgba(248,239,222,.04); border:1px solid rgba(248,239,222,.1); border-radius:12px; padding:30px 26px;}
+  .step-num{font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--gold-soft); font-size:2rem; display:block; margin-bottom:14px;}
+  .step-card h3{margin:0 0 8px; font-size:1.05rem; font-weight:600;}
+  .step-card p{color:var(--muted); font-size:.9rem; margin:0;}
+
+  /* ---------- Final CTA ---------- */
+  .final{padding:96px 0; text-align:center; background:var(--dusk-deep);}
+  .final p.serif{font-size:2.2rem; margin-bottom:16px;}
+  .final p.sub{color:var(--muted); max-width:44ch; margin:0 auto 30px;}
+
+  footer{background:var(--dusk-deep); padding:48px 0 28px; border-top:1px solid rgba(248,239,222,.08);}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  footer a{text-decoration:none; color:var(--muted); font-size:.85rem;}
+  footer a:hover{color:var(--gold-soft);}
+  .footer-links{display:flex; gap:22px; flex-wrap:wrap;}
+
+  @media (max-width:900px){
+    nav.links{display:none;}
+    .ritual .wrap, .ingredients .wrap{grid-template-columns:1fr; gap:36px;}
+    .steps-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-tight.png" alt="Lengo Organics"></a>
+    <nav class="links">
+      <a href="#ritual">The Ritual</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="samantha.html">Founder</a>
+      <a href="index.html">Full Site</a>
+    </nav>
+    <a href="#" data-todo="add product checkout URL" class="btn">Shop the Detangler</a>
+  </div>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <img src="detangler-hero.jpg" alt="Woman in the Serengeti at golden hour spraying the Lengo Organics Detangler Root Hair Spray as her curls catch the wind">
+    <div class="wrap hero-copy">
+      <p class="eyebrow">Detangler Root Hair Spray</p>
+      <h1>Slip, softness, and ease — from root to end.</h1>
+      <p class="lede">A lightweight, oil-rich mist made with shea oil, castor oil, mango butter and guava leaf extract — misted onto pre-shampooed, towel-dried hair to soften strands, restore texture, and make every knot easier to work through.</p>
+      <div class="hero-actions">
+        <a href="#" data-todo="add product checkout URL" class="btn">Shop the Detangler</a>
+        <a href="index.html" class="btn ghost">View Full Landing Page</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RITUAL ================= -->
+  <section class="ritual reveal" id="ritual">
+    <div class="wrap">
+      <div class="ritual-photo"><img src="detangler-ritual.jpg" alt="Woman smiling in golden-hour grassland, misting the Lengo Organics Detangler Root Hair Spray over her hair"></div>
+      <div>
+        <p class="serif" style="font-size:1.1rem; margin-bottom:8px;">Beauty is Balance</p>
+        <h2 class="serif">The step between wash day and styling.</h2>
+        <p>Coily, coarse, and textured hair tends to tangle fastest at the root — right where a comb or brush can do the most damage. The Detangler is misted in before that stage, coating each strand in a light, oil-rich layer so fingers or a wide-tooth comb can glide through with far less pulling.</p>
+        <p>Every batch is formulated and manufactured in Uganda, the same as the rest of the Lengo range.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FULL-BLEED BREAK ================= -->
+  <div class="break">
+    <img src="detangler-break1.jpg" alt="Woman laughing in a golden savanna field, sunlit mist from the Lengo Organics Detangler Root Hair Spray drifting through her hair">
+    <div class="break-caption wrap"><p class="serif">Ease into every knot, root to end.</p></div>
+  </div>
+
+  <!-- ================= INGREDIENTS ================= -->
+  <section class="ingredients reveal" id="ingredients">
+    <div class="wrap">
+      <div class="ing-photo"><img src="detangler-ingredients.jpg" alt="Lengo Organics Detangler Root Hair Spray bottle beside fresh coconut, shea butter, guava leaves and oil on a wooden surface"></div>
+      <div>
+        <h2 class="serif">What's actually in it.</h2>
+        <p>A short, purposeful ingredient list built around shea oil and castor oil — no filler, nothing you can't pronounce.</p>
+        <ul class="tag-list">
+          <li>Aqua</li>
+          <li>Shea oil</li>
+          <li>Castor oil</li>
+          <li>Mango butter</li>
+          <li>Coconut milk</li>
+          <li>Guava leaf extract</li>
+          <li>Cetyl alcohol</li>
+          <li>Polysorbate-20</li>
+          <li>Emulsifying wax</li>
+          <li>Vitamin E</li>
+          <li>Fragrance</li>
+        </ul>
+        <p class="formula-note">Newly improved formula, enriched with Vitamin E and essential oils. [REPLACE: confirm final INCI listing against the approved product label before publishing.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW TO USE ================= -->
+  <section class="ritual-steps reveal" id="how-to-use">
+    <div class="wrap">
+      <div class="steps-head">
+        <p class="serif">The Ritual</p>
+        <h2 class="serif">How to use.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h3>Shake well</h3>
+          <p>Before every use, to bring the formula back together.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h3>Mist root to end</h3>
+          <p>Apply to pre-shampooed, towel-dried hair, focusing on the roots and any areas prone to knotting.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h3>Work through gently</h3>
+          <p>Finger-detangle or use a wide-tooth comb, easing out knots as the spray softens each strand.</p>
+        </div>
+      </div>
+      <p style="text-align:center; color:var(--muted); font-size:.82rem; margin-top:30px; font-style:italic;">[REPLACE: confirm these directions match the current product label before publishing — the wording above is adapted from Lengo's approved product description, not transcribed from packaging.]</p>
+    </div>
+  </section>
+
+  <!-- ================= FULL-BLEED BREAK 2 ================= -->
+  <div class="break">
+    <img src="detangler-break2.jpg" alt="Woman spraying the Lengo Organics Detangler Root Hair Spray overhead in a golden Serengeti field at sunset">
+    <div class="break-caption wrap"><p class="serif">Beauty is Balance.</p></div>
+  </div>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final reveal">
+    <div class="wrap">
+      <p class="serif">Complete the routine.</p>
+      <p class="sub">Pair the Detangler Root Hair Spray with the Deep Cleansing Shampoo and Leave-In Repair Mask for the full Lengo wash-day system.</p>
+      <a href="index.html#products" class="btn">Explore the Collection</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span style="font-size:.82rem; color:var(--muted);">© <span id="year"></span> Lengo Organics</span>
+    <div class="footer-links">
+      <a href="index.html">Landing Page</a>
+      <a href="mailto:lengoorganics18@gmail.com">lengoorganics18@gmail.com</a>
+      <a href="tel:+256758604818">+256 758 604 818</a>
+      <a href="https://www.instagram.com/lengoorganics/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/people/Lengo-Organics/100064016591459/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
