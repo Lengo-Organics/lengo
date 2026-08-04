@@ -169,9 +169,246 @@
     .gallery-grid{grid-template-columns:1fr 1fr;}
     .style-gallery .tall{grid-row:auto; aspect-ratio:4/5;}
   }
+
+  /* ============================================================
+     LUXURY ENHANCEMENTS — night/gold register. Layered on top of
+     the existing system; every value reuses the same tokens.
+     ============================================================ */
+
+  /* Scroll-progress gold bar */
+  .scroll-progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold), var(--gold-soft), var(--rose));
+    z-index:100; transition:width .1s linear; box-shadow:0 0 14px rgba(217,161,91,.7);
+  }
+
+  /* Ambient atmosphere: two slow-drifting gold glows + fine grain,
+     fixed behind everything so the whole page feels alive */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(closest-side at 18% 22%, rgba(217,161,91,.16), transparent 70%),
+      radial-gradient(closest-side at 82% 68%, rgba(201,140,160,.12), transparent 70%);
+    animation:drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    0%{transform:translate3d(0,0,0) scale(1);}
+    100%{transform:translate3d(0,-26px,0) scale(1.08);}
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @media (prefers-reduced-motion:reduce){ body::before{animation:none;} }
+
+  /* Foil-stamp shimmer on the display serifs */
+  @media (prefers-reduced-motion:no-preference){
+    .hero-copy h1,
+    .story h2.serif, .recognition-copy h2.serif, .eco-head h2.serif,
+    .style-section h2.serif, .philosophy p.serif, .press-head h2.serif,
+    .gallery-head h2.serif, .follow p.serif{
+      background:linear-gradient(100deg,
+        var(--gold-soft) 0%, var(--gold-soft) 40%,
+        #FFF1D6 50%, var(--gold) 58%, var(--gold-soft) 70%, var(--gold-soft) 100%);
+      background-size:220% auto; -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+      animation:shimmer 7s linear infinite;
+    }
+    .hero-copy h1{animation-duration:9s;}
+    @keyframes shimmer{0%{background-position:180% center;}100%{background-position:-80% center;}}
+  }
+
+  /* Sticky header shrink on scroll */
+  header{transition:padding .3s ease, background .3s ease, box-shadow .3s ease;}
+  header.scrolled{background:rgba(11,15,23,.94); box-shadow:0 12px 34px -20px rgba(0,0,0,.8);}
+  header.scrolled .nav{padding-top:10px; padding-bottom:10px;}
+  .brand-mark{transition:height .3s ease;}
+  header.scrolled .brand-mark{height:36px; width:36px;}
+
+  /* Magnetic buttons + sheen wipe */
+  .btn{will-change:transform; position:relative; overflow:hidden;}
+  .btn::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+    transform:translateX(-120%); transition:transform .6s ease;
+  }
+  .btn:hover::after{transform:translateX(120%);}
+
+  /* ---------- HERO: video-ready, Ken-Burns, scroll fade ---------- */
+  .hero{min-height:92vh;}
+  .hero .hero-media{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 15%;}
+  @media (prefers-reduced-motion:no-preference){
+    img.hero-media{animation:kenburns 20s ease-in-out infinite alternate; transform-origin:52% 40%;}
+    /* video gets a slower, subtler drift so text stays readable */
+    video.hero-media{animation:kenburns 28s ease-in-out infinite alternate; transform-origin:52% 38%;}
+    @keyframes kenburns{0%{transform:scale(1.05);}100%{transform:scale(1.16) translateY(-1.5%);}}
+  }
+  /* richer cinematic gradient than the base, plus a gold floor-glow */
+  .hero::after{
+    background:
+      radial-gradient(120% 80% at 50% 120%, rgba(217,161,91,.22), transparent 55%),
+      linear-gradient(180deg, rgba(11,15,23,.15) 0%, rgba(11,15,23,.55) 50%, rgba(11,15,23,.96) 100%);
+  }
+  .hero-copy{animation:heroRise 1s ease both;}
+  @keyframes heroRise{from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);}}
+  .hero-copy h1{position:relative;}
+  /* thin gold rule that draws itself under the name */
+  .hero-copy h1::after{
+    content:""; display:block; height:2px; width:0; margin-top:14px;
+    background:linear-gradient(90deg, var(--gold), transparent);
+    animation:drawline 1.4s ease .5s forwards;
+  }
+  @keyframes drawline{to{width:220px;}}
+  /* scroll cue */
+  .scroll-cue{
+    position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2;
+    width:26px; height:42px; border:2px solid rgba(243,236,222,.5); border-radius:14px;
+  }
+  .scroll-cue::before{
+    content:""; position:absolute; left:50%; top:8px; transform:translateX(-50%);
+    width:4px; height:8px; border-radius:2px; background:var(--gold-soft);
+    animation:cue 1.6s ease-in-out infinite;
+  }
+  @keyframes cue{0%{opacity:0; transform:translate(-50%,0);}40%{opacity:1;}100%{opacity:0; transform:translate(-50%,14px);}}
+
+  /* Fact items: gold top-border draws in on scroll-reveal */
+  .facts .fact{position:relative; padding-top:16px;}
+  .facts .fact::before{
+    content:""; position:absolute; top:0; left:0; height:2px; width:32px;
+    background:var(--gold); transition:width .8s ease;
+  }
+  .facts.is-visible .fact:hover::before{width:100%;}
+
+  /* Story portrait: gold frame, hover lift, sheen sweep */
+  .story-photo{position:relative; box-shadow:0 30px 60px -30px rgba(0,0,0,.8);}
+  .story-photo::after{
+    content:""; position:absolute; inset:0; border:1px solid rgba(217,161,91,.45); border-radius:6px; pointer-events:none;
+  }
+  .story-photo img{transition:transform .8s cubic-bezier(.2,.7,.2,1);}
+  .story-photo:hover img{transform:scale(1.06);}
+  blockquote{position:relative;}
+  blockquote::before{
+    content:"\201C"; position:absolute; left:-6px; top:-26px;
+    font-family:'Cormorant Garamond',serif; font-size:4rem; color:rgba(217,161,91,.35); line-height:1;
+  }
+
+  /* Recognition badge: floats + gold glow that follows the cursor */
+  .recognition-badge{position:relative;}
+  .recognition-badge img{filter:drop-shadow(0 18px 30px rgba(0,0,0,.55)); animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  .recognition-badge::before{
+    content:""; position:absolute; width:280px; height:280px; border-radius:50%;
+    left:calc(var(--mx,50%) - 140px); top:calc(var(--my,50%) - 140px);
+    background:radial-gradient(circle, rgba(217,161,91,.28), transparent 68%);
+    pointer-events:none; transition:opacity .3s ease; opacity:0;
+  }
+  .recognition-badge:hover::before{opacity:1;}
+
+  /* ---------- Ecosystem: animated timeline spine + card polish ---------- */
+  .eco-grid{position:relative;}
+  .eco-card{position:relative; transition:transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s ease, box-shadow .4s ease; overflow:hidden;}
+  .eco-card::before{
+    content:""; position:absolute; inset:0; border-radius:12px; padding:1px;
+    background:linear-gradient(140deg, var(--gold), transparent 60%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity .4s ease;
+  }
+  .eco-card:hover{transform:translateY(-8px); box-shadow:0 26px 50px -28px rgba(0,0,0,.75);}
+  .eco-card:hover::before{opacity:1;}
+  .eco-card .yr{position:relative; z-index:1;}
+  /* the year "counts" up visually via a shimmering underline */
+  .eco-card .yr::after{
+    content:""; display:block; width:26px; height:2px; margin-top:6px;
+    background:linear-gradient(90deg, var(--gold-soft), transparent);
+  }
+
+  /* Style gallery: parallax tilt group, gold frame on hover */
+  .style-gallery img{transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; box-shadow:0 20px 40px -26px rgba(0,0,0,.7);}
+  .style-gallery img:hover{transform:translateY(-6px) scale(1.02); box-shadow:0 30px 60px -28px rgba(0,0,0,.85), 0 0 0 1px rgba(217,161,91,.5);}
+  .style-list li{transition:padding-left .3s ease, color .3s ease;}
+  .style-list li:hover{padding-left:10px; color:var(--gold-soft);}
+
+  /* ---------- Philosophy: parallax bg + word-by-word fade ---------- */
+  .philosophy{min-height:70vh; display:flex; align-items:center;}
+  @media (prefers-reduced-motion:no-preference){
+    .philosophy img{animation:kenburns 24s ease-in-out infinite alternate;}
+  }
+  .philosophy::after{background:linear-gradient(180deg, rgba(11,15,23,.72), rgba(11,15,23,.86));}
+
+  /* ---------- ROTATING QUOTE SECTION ---------- */
+  .quote-rotator{position:relative; padding:120px 0; text-align:center; background:var(--night); overflow:hidden;}
+  .quote-rotator .wrap{max-width:920px; position:relative; z-index:1;}
+  .quote-eyebrow{font-size:.76rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold-soft); font-weight:600; margin:0 0 48px;}
+  .quote-stage{position:relative; display:grid;}
+  /* all slides occupy the SAME grid cell, so the stage is as tall as the
+     tallest quote and none of them ever overlap the eyebrow or the dots */
+  .q-slide{grid-area:1 / 1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    opacity:0; transform:translateY(14px); transition:opacity .7s ease, transform .7s ease; pointer-events:none;}
+  .q-slide.active{opacity:1; transform:translateY(0);}
+  .q-slide blockquote{
+    border:none; padding:0; margin:0 auto; max-width:22ch;
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.6rem,3.2vw,2.5rem); line-height:1.32; color:var(--cream);
+  }
+  .q-slide blockquote::before{content:none;}
+  .q-slide .q-mark{font-family:'Cormorant Garamond',serif; font-size:3.4rem; color:rgba(217,161,91,.4); line-height:.4; display:block; margin-bottom:10px;}
+  .q-slide cite{display:block; margin-top:26px; font-family:'Poppins',sans-serif; font-style:normal;
+    font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-soft);}
+  .q-slide .q-tag{display:inline-block; margin-left:10px; padding-left:10px; border-left:1px solid rgba(217,161,91,.4);
+    font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);}
+  .quote-dots{display:flex; gap:10px; justify-content:center; margin-top:44px;}
+  .quote-dots button{width:8px; height:8px; padding:0; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(243,236,222,.25); transition:background .3s ease, transform .3s ease;}
+  .quote-dots button.on{background:var(--gold); transform:scale(1.35);}
+  .quote-refresh{margin-top:30px; display:inline-flex; align-items:center; gap:8px; background:none; border:1px solid rgba(243,236,222,.3);
+    color:var(--cream); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; padding:10px 20px; border-radius:999px; cursor:pointer;
+    transition:border-color .25s ease, color .25s ease;}
+  .quote-refresh:hover{border-color:var(--gold); color:var(--gold-soft);}
+  .quote-refresh svg{width:14px; height:14px;}
+
+  /* ---------- Press: visual thumbnail cards + play badge ---------- */
+  .press-grid{grid-template-columns:repeat(3,1fr);}
+  .press-card{overflow:hidden; padding:0; display:flex; flex-direction:column;}
+  .press-thumb{position:relative; aspect-ratio:16/9; overflow:hidden; background:#0f1622;}
+  .press-thumb img{width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+  .press-card:hover .press-thumb img{transform:scale(1.08);}
+  .press-thumb::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(11,15,23,.55));}
+  .press-play{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2;
+    width:56px; height:56px; border-radius:50%; background:rgba(217,161,91,.92);
+    display:grid; place-items:center; transition:transform .3s ease, background .3s ease; box-shadow:0 10px 24px -8px rgba(0,0,0,.7);}
+  .press-card:hover .press-play{transform:translate(-50%,-50%) scale(1.12); background:var(--gold-soft);}
+  .press-play svg{width:22px; height:22px; fill:var(--night-deep); margin-left:3px;}
+  .press-body{padding:18px 20px 22px;}
+  .press-card .src{margin-bottom:8px;}
+  .press-card.text-only{padding:24px 22px;}
+  .press-card.text-only .press-body{padding:0;}
+
+  /* Gallery: masonry-ish scale + gold frame on hover */
+  .gallery-grid img{transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; box-shadow:0 18px 36px -26px rgba(0,0,0,.7);}
+  .gallery-grid img:hover{transform:scale(1.04); box-shadow:0 28px 54px -26px rgba(0,0,0,.85), 0 0 0 1px rgba(217,161,91,.5);}
+
+  /* Quote-card style follow buttons already exist; add lift to press text card */
+  .press-card:hover{border-color:rgba(217,161,91,.5);}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{position:fixed; inset:0; z-index:200; background:rgba(6,9,14,.92); backdrop-filter:blur(6px);
+    display:none; align-items:center; justify-content:center; padding:24px;}
+  .lightbox.open{display:flex;}
+  .lightbox-inner{position:relative; width:min(960px,92vw); aspect-ratio:16/9; box-shadow:0 40px 90px -30px rgba(0,0,0,.9);}
+  .lightbox-inner iframe{width:100%; height:100%; border:0; border-radius:8px;}
+  .lightbox-close{position:absolute; top:-46px; right:0; background:none; border:1px solid rgba(243,236,222,.4);
+    color:var(--cream); width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:1.1rem; line-height:1;}
+  .lightbox-close:hover{border-color:var(--gold); color:var(--gold-soft);}
+
+  @media (max-width:900px){
+    .press-grid{grid-template-columns:1fr;}
+    .scroll-cue{display:none;}
+  }
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <header>
   <div class="nav">
@@ -188,9 +425,17 @@
 </header>
 
 <main>
-  <!-- ================= HERO ================= -->
+  <!-- ================= HERO =================
+       Background video loop (muted, autoplay, looping). The poster frame
+       shows instantly while the video loads. To swap the clip later, just
+       replace assets/sam-hero.mp4 (and optionally sam-hero-poster.jpg). -->
   <section class="hero">
-    <img src="assets/samantha-hero-arch.jpg" alt="Samantha Okullo in a red gown against a neon-lit archway">
+    <video class="hero-media" autoplay muted loop playsinline poster="assets/sam-hero-poster.jpg">
+      <source src="assets/sam-hero.mp4" type="video/mp4">
+      <!-- Fallback if video can't play: a still portrait -->
+      <img class="hero-media" src="assets/sam-hero-white.jpg" alt="Samantha Okullo in a white suit with gold jewellery">
+    </video>
+
     <div class="wrap hero-copy">
       <p class="eyebrow">Founder Spotlight</p>
       <h1>Samantha Okullo</h1>
@@ -200,10 +445,11 @@
         <a href="https://www.instagram.com/nikkitalov/" target="_blank" rel="noopener" class="btn">Follow Her Journey</a>
       </div>
     </div>
+    <div class="scroll-cue" aria-hidden="true"></div>
   </section>
 
   <!-- ================= QUICK FACTS ================= -->
-  <section class="facts">
+  <section class="facts reveal">
     <div class="wrap">
       <div class="fact">
         <h3 class="serif">Born</h3>
@@ -227,7 +473,7 @@
   <!-- ================= STORY ================= -->
   <section class="story reveal" id="story">
     <div class="wrap">
-      <div class="story-photo"><img src="assets/samantha-founder-portrait.jpg" alt="Samantha Okullo, founder portrait"></div>
+      <div class="story-photo"><img src="assets/sam-laptop.jpg" alt="Samantha Okullo working on her laptop"></div>
       <div>
         <p class="serif" style="font-size:1.05rem; margin-bottom:8px;">The Builder</p>
         <h2 class="serif">Given a start, then built the rest herself.</h2>
@@ -238,6 +484,55 @@
           <cite>Samantha Okullo, on her father's early support — SatisFashion Uganda</cite>
         </blockquote>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= ROTATING QUOTE =================
+       Shows ONE quote, chosen at random on each load, from the six below.
+       Dots + "Another" button let the viewer cycle through all six.
+       All quotes are verbatim from Samantha's own interviews (source shown
+       under each). To add more later, copy a <figure class="q-slide"> block
+       and set its data-tag; the script picks them up automatically. -->
+  <section class="quote-rotator reveal" id="words">
+    <div class="wrap">
+      <p class="quote-eyebrow">In Her Own Words</p>
+      <div class="quote-stage" id="quoteStage">
+        <figure class="q-slide" data-tag="Motivational">
+          <span class="q-mark">&ldquo;</span>
+          <blockquote>He only gave it to me because he could see the vision I had. I had to prove to him that it was going to work &mdash; and it&rsquo;s five years later. He didn&rsquo;t make a mistake.</blockquote>
+          <cite>Samantha Okullo<span class="q-tag">SatisFashion Uganda</span></cite>
+        </figure>
+        <figure class="q-slide" data-tag="On Business">
+          <span class="q-mark">&ldquo;</span>
+          <blockquote>There&rsquo;s competition everywhere. But I always say: create a product so unique that even if somebody wanted to copy you, it would take them three years &mdash; and by then, you&rsquo;ve already moved on.</blockquote>
+          <cite>Samantha Okullo<span class="q-tag">SatisFashion Uganda</span></cite>
+        </figure>
+        <figure class="q-slide" data-tag="Her Philosophy">
+          <span class="q-mark">&ldquo;</span>
+          <blockquote>You cannot be a gorgeous person on the inside with bad manners. My mother always told me that. For me, beauty is balance &mdash; who you are on the inside should reflect who you are on the outside.</blockquote>
+          <cite>Samantha Okullo<span class="q-tag">SatisFashion Uganda</span></cite>
+        </figure>
+        <figure class="q-slide" data-tag="On Style">
+          <span class="q-mark">&ldquo;</span>
+          <blockquote>They wanted me to manufacture in Kenya. But this is a made-in-Uganda brand &mdash; I&rsquo;m not going to take it elsewhere and still put &lsquo;Made in Uganda&rsquo; on it.</blockquote>
+          <cite>Samantha Okullo<span class="q-tag">On building Lengo Organics</span></cite>
+        </figure>
+        <figure class="q-slide" data-tag="Off the Cuff">
+          <span class="q-mark">&ldquo;</span>
+          <blockquote>Never break your macaroni, honey &mdash; not even as a guy. It&rsquo;s a rule.</blockquote>
+          <cite>Samantha Okullo<span class="q-tag">Cooking with Esther</span></cite>
+        </figure>
+        <figure class="q-slide" data-tag="Inspirational">
+          <span class="q-mark">&ldquo;</span>
+          <blockquote>I want to be remembered as somebody who did the best they could with the least resources they had &mdash; to create jobs, to give income, to make change. It&rsquo;s not even about me.</blockquote>
+          <cite>Samantha Okullo<span class="q-tag">Life of She(E-O)</span></cite>
+        </figure>
+      </div>
+      <div class="quote-dots" id="quoteDots" role="tablist" aria-label="Choose a quote"></div>
+      <button class="quote-refresh" id="quoteRefresh" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+        Another
+      </button>
     </div>
   </section>
 
@@ -308,9 +603,9 @@
   <section class="style-section reveal">
     <div class="wrap">
       <div class="style-gallery">
-        <img class="tall" src="assets/samantha-boutique-1.jpg" alt="Samantha Okullo in a red dress at a boutique">
-        <img src="assets/samantha-boutique-2.jpg" alt="Samantha Okullo posing in a boutique fitting room">
-        <img src="assets/samantha-founder-seated.jpg" alt="Samantha Okullo seated portrait">
+        <img class="tall" src="assets/sam-magenta-stand.jpg" alt="Samantha Okullo in a magenta jumpsuit">
+        <img src="assets/sam-magenta-portrait.jpg" alt="Samantha Okullo, magenta portrait">
+        <img src="assets/sam-magenta-laugh.jpg" alt="Samantha Okullo laughing">
       </div>
       <div>
         <p class="serif" style="font-size:1.05rem; margin-bottom:8px;">In Her Own Words</p>
@@ -328,7 +623,7 @@
 
   <!-- ================= PHILOSOPHY BREAK ================= -->
   <section class="philosophy reveal">
-    <img src="assets/samantha-hero-arch-close.jpg" alt="Samantha Okullo close portrait">
+    <img src="assets/sam-dubai-night.jpg" alt="Samantha Okullo against a night city skyline">
     <div class="wrap">
       <p class="serif">"Beauty is Balance."</p>
       <p class="sub">A lesson from her mother — that you can't be beautiful on the outside while carrying bad manners on the inside. It's the philosophy behind Lengo Organics as much as it is her own.</p>
@@ -343,65 +638,113 @@
         <h2 class="serif">Featured &amp; Interviewed</h2>
       </div>
       <div class="press-grid">
-        <a class="press-card" href="https://satisfashionug.com/empowered-voices-6-women-entrepreneurs-in-ugandas-beauty-industry-reflect-on-their-inspiring-journeys/" target="_blank" rel="noopener">
-          <span class="src">SatisFashion Uganda</span>
-          <h3>Empowered Voices: 6 Women Entrepreneurs in Uganda's Beauty Industry</h3>
-          <p>Featured alongside five other founders reflecting on their entrepreneurial journeys.</p>
+        <a class="press-card text-only" href="https://satisfashionug.com/empowered-voices-6-women-entrepreneurs-in-ugandas-beauty-industry-reflect-on-their-inspiring-journeys/" target="_blank" rel="noopener">
+          <div class="press-body">
+            <span class="src">SatisFashion Uganda</span>
+            <h3>Empowered Voices: 6 Women Entrepreneurs in Uganda&rsquo;s Beauty Industry</h3>
+            <p>Featured alongside five other founders reflecting on their entrepreneurial journeys.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.sqoop.co.ug/202403/features/fashion-beauty/style-samantha-okullo-influencer.html" target="_blank" rel="noopener">
-          <span class="src">Sqoop Uganda</span>
-          <h3>Style: Samantha Okullo, Influencer</h3>
-          <p>A personal style Q&amp;A — wardrobe staples, favourite designers, and her stance on authenticity.</p>
+        <a class="press-card text-only" href="https://www.sqoop.co.ug/202403/features/fashion-beauty/style-samantha-okullo-influencer.html" target="_blank" rel="noopener">
+          <div class="press-body">
+            <span class="src">Sqoop Uganda</span>
+            <h3>Style: Samantha Okullo, Influencer</h3>
+            <p>A personal style Q&amp;A — wardrobe staples, favourite designers, and her stance on authenticity.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.monitor.co.ug/uganda/lifestyle/entertainment/we-need-to-learn-to-give-everyone-grace-samantha-5388008" target="_blank" rel="noopener">
-          <span class="src">Daily Monitor</span>
-          <h3>"We need to learn to give everyone grace" — Samantha</h3>
-          <p>A lifestyle profile by Gloria Haguma on life away from the business.</p>
+        <a class="press-card text-only" href="https://www.monitor.co.ug/uganda/lifestyle/entertainment/we-need-to-learn-to-give-everyone-grace-samantha-5388008" target="_blank" rel="noopener">
+          <div class="press-body">
+            <span class="src">Daily Monitor</span>
+            <h3>&ldquo;We need to learn to give everyone grace&rdquo;</h3>
+            <p>A lifestyle profile by Gloria Haguma on life away from the business.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://open.spotify.com/episode/5vKGs66eXwRxNBOtaIONmj" target="_blank" rel="noopener">
-          <span class="src">Podcast</span>
-          <h3>Spotify Episode Appearance</h3>
-          <p>Listen on Spotify.</p>
+        <a class="press-card text-only" href="https://open.spotify.com/episode/5vKGs66eXwRxNBOtaIONmj" target="_blank" rel="noopener">
+          <div class="press-body">
+            <span class="src">Podcast · Spotify</span>
+            <h3>Podcast Episode Appearance</h3>
+            <p>Listen to the full conversation on Spotify.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.youtube.com/watch?v=DDWTSrjjWF4" target="_blank" rel="noopener">
-          <span class="src">YouTube</span>
-          <h3>Video Interview</h3>
-          <p>Watch on YouTube.</p>
+        <a class="press-card" href="https://www.youtube.com/watch?v=DDWTSrjjWF4" target="_blank" rel="noopener" data-video="DDWTSrjjWF4">
+          <div class="press-thumb">
+            <img src="https://img.youtube.com/vi/DDWTSrjjWF4/hqdefault.jpg" alt="Video Interview" loading="lazy">
+            <span class="press-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="press-body">
+            <span class="src">YouTube</span>
+            <h3>Video Interview</h3>
+            <p>A sit-down conversation on building the Mirrors & Lengo ecosystem.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.youtube.com/watch?v=tzpqoX8MspY" target="_blank" rel="noopener">
-          <span class="src">YouTube</span>
-          <h3>Video Interview</h3>
-          <p>Watch on YouTube.</p>
+        <a class="press-card" href="https://www.youtube.com/watch?v=tzpqoX8MspY" target="_blank" rel="noopener" data-video="tzpqoX8MspY">
+          <div class="press-thumb">
+            <img src="https://img.youtube.com/vi/tzpqoX8MspY/hqdefault.jpg" alt="Video Interview" loading="lazy">
+            <span class="press-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="press-body">
+            <span class="src">YouTube</span>
+            <h3>Video Interview</h3>
+            <p>On entrepreneurship, family, and the early years.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.youtube.com/watch?v=DVcUpwJXNSg" target="_blank" rel="noopener">
-          <span class="src">YouTube</span>
-          <h3>Video Interview</h3>
-          <p>Watch on YouTube.</p>
+        <a class="press-card" href="https://www.youtube.com/watch?v=DVcUpwJXNSg" target="_blank" rel="noopener" data-video="DVcUpwJXNSg">
+          <div class="press-thumb">
+            <img src="https://img.youtube.com/vi/DVcUpwJXNSg/hqdefault.jpg" alt="Video Interview" loading="lazy">
+            <span class="press-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="press-body">
+            <span class="src">YouTube</span>
+            <h3>Video Interview</h3>
+            <p>Talking beauty, business, and made-in-Uganda ambition.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.youtube.com/watch?v=lbpX2W7LvGE" target="_blank" rel="noopener">
-          <span class="src">YouTube</span>
-          <h3>Video Interview</h3>
-          <p>Watch on YouTube.</p>
+        <a class="press-card" href="https://www.youtube.com/watch?v=lbpX2W7LvGE" target="_blank" rel="noopener" data-video="lbpX2W7LvGE">
+          <div class="press-thumb">
+            <img src="https://img.youtube.com/vi/lbpX2W7LvGE/hqdefault.jpg" alt="Video Interview" loading="lazy">
+            <span class="press-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="press-body">
+            <span class="src">YouTube</span>
+            <h3>Video Interview</h3>
+            <p>Reflections on recognition and what comes next.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.youtube.com/watch?v=6cVyjMUCvno" target="_blank" rel="noopener">
-          <span class="src">YouTube</span>
-          <h3>Video Interview</h3>
-          <p>Watch on YouTube.</p>
+        <a class="press-card" href="https://www.youtube.com/watch?v=6cVyjMUCvno" target="_blank" rel="noopener" data-video="6cVyjMUCvno">
+          <div class="press-thumb">
+            <img src="https://img.youtube.com/vi/6cVyjMUCvno/hqdefault.jpg" alt="Video Interview" loading="lazy">
+            <span class="press-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="press-body">
+            <span class="src">YouTube</span>
+            <h3>Video Interview</h3>
+            <p>Candid thoughts on style, grace, and staying grounded.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.youtube.com/watch?v=JcgOISV76ZQ" target="_blank" rel="noopener">
-          <span class="src">YouTube</span>
-          <h3>Video Interview</h3>
-          <p>Watch on YouTube.</p>
+        <a class="press-card" href="https://www.youtube.com/watch?v=JcgOISV76ZQ" target="_blank" rel="noopener" data-video="JcgOISV76ZQ">
+          <div class="press-thumb">
+            <img src="https://img.youtube.com/vi/JcgOISV76ZQ/hqdefault.jpg" alt="Video Interview" loading="lazy">
+            <span class="press-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="press-body">
+            <span class="src">YouTube</span>
+            <h3>Video Interview</h3>
+            <p>More from the long-form interview series.</p>
+          </div>
         </a>
-        <a class="press-card" href="https://www.instagram.com/reel/DWWYOFmCGYA/" target="_blank" rel="noopener">
-          <span class="src">Instagram</span>
-          <h3>Reel Feature</h3>
-          <p>Watch on Instagram.</p>
+        <a class="press-card text-only" href="https://www.instagram.com/reel/DWWYOFmCGYA/" target="_blank" rel="noopener">
+          <div class="press-body">
+            <span class="src">Instagram</span>
+            <h3>Reel Feature</h3>
+            <p>Watch the reel on Instagram.</p>
+          </div>
         </a>
-        <div class="press-card" style="cursor:default;">
-          <span class="src">SatisFashion Uganda</span>
-          <h3>How Samantha Okullo Turned 40M UGX From Her Dad Into a Multi-Million Beauty Brand</h3>
-          <p>Referenced by SatisFashion's own social channels — [REPLACE: I couldn't verify the live article URL, add the real link here].</p>
+        <div class="press-card text-only" style="cursor:default;">
+          <div class="press-body">
+            <span class="src">SatisFashion Uganda</span>
+            <h3>How Samantha Okullo Turned 40M UGX Into a Multi-Million Beauty Brand</h3>
+            <p>Referenced by SatisFashion&rsquo;s social channels — [REPLACE: add the verified article URL here].</p>
+          </div>
         </div>
       </div>
       <p style="text-align:center; margin-top:28px; font-size:.78rem; color:var(--muted); font-style:italic;">[REPLACE: confirm each link still resolves and swap in a real thumbnail/description once you've reviewed the full piece — several of the above are titled from context, not fully read.]</p>
@@ -416,10 +759,10 @@
         <h2 class="serif">Gallery</h2>
       </div>
       <div class="gallery-grid">
-        <img src="assets/samantha-dinner.jpg" alt="Samantha Okullo at dinner">
-        <img src="assets/samantha-japanese-dinner.jpg" alt="Samantha Okullo at a restaurant">
-        <img src="assets/samantha-cocktail-brown.jpg" alt="Samantha Okullo at an evening event">
-        <img src="assets/samantha-boutique-window.jpg" alt="Samantha Okullo, artistic window portrait">
+        <img src="assets/sam-white-seated.jpg" alt="Samantha Okullo, white suit seated">
+        <img src="assets/sam-mint-chair.jpg" alt="Samantha Okullo in a mint shirt">
+        <img src="assets/sam-white-portrait.jpg" alt="Samantha Okullo, white suit portrait">
+        <img src="assets/sam-white-power.jpg" alt="Samantha Okullo, white suit with gold heels">
       </div>
     </div>
   </section>
@@ -437,6 +780,14 @@
       </div>
     </div>
   </section>
+  <!-- Lightbox for press videos -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close video">&times;</button>
+      <iframe id="lightboxFrame" title="Video interview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
 </main>
 
 <footer>
@@ -454,7 +805,10 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  const allowMotion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
+  // Scroll reveal
+  if (allowMotion) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
     }, { threshold: .12 });
@@ -462,6 +816,100 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
   }
+
+  // Scroll-progress bar + header shrink
+  const bar = document.getElementById('scrollProgress');
+  const header = document.querySelector('header');
+  const onScroll = () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    header.classList.toggle('scrolled', h.scrollTop > 20);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (allowMotion) {
+    // Magnetic buttons
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        btn.style.transform = `translate(${x * 0.16}px, ${y * 0.26 - 2}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+
+    // Recognition badge: gold glow follows cursor
+    const badge = document.querySelector('.recognition-badge');
+    if (badge) {
+      badge.addEventListener('mousemove', (e) => {
+        const r = badge.getBoundingClientRect();
+        badge.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        badge.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    }
+  }
+
+  // ---------- Rotating quote ----------
+  (function(){
+    const stage = document.getElementById('quoteStage');
+    if (!stage) return;
+    const slides = Array.from(stage.querySelectorAll('.q-slide'));
+    const dotsWrap = document.getElementById('quoteDots');
+    const refresh = document.getElementById('quoteRefresh');
+    let current = Math.floor(Math.random() * slides.length); // random on load
+    let timer;
+
+    // build dots
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Quote ' + (i + 1));
+      b.addEventListener('click', () => { show(i); rearm(); });
+      dotsWrap.appendChild(b);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function show(i){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('on');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('on');
+    }
+    function next(){ show((current + 1) % slides.length); }
+    function rearm(){ clearInterval(timer); if (allowMotion) timer = setInterval(next, 7000); }
+
+    show(current);
+    rearm();
+    refresh.addEventListener('click', () => {
+      let n; do { n = Math.floor(Math.random() * slides.length); } while (n === current && slides.length > 1);
+      show(n); rearm();
+    });
+  })();
+
+  // ---------- Press video lightbox ----------
+  (function(){
+    const lb = document.getElementById('lightbox');
+    const frame = document.getElementById('lightboxFrame');
+    const closeBtn = document.getElementById('lightboxClose');
+    if (!lb) return;
+    function open(id){
+      frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+      lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+    }
+    function close(){
+      lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); frame.src = '';
+    }
+    document.querySelectorAll('.press-card[data-video]').forEach(card => {
+      card.addEventListener('click', (e) => { e.preventDefault(); open(card.getAttribute('data-video')); });
+    });
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  })();
 </script>
 
 </body>
