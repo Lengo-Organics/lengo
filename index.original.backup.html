@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lengo Organics | Organic Hair Care Made in Uganda</title>
+<meta name="description" content="Lengo Organics — organic, shea butter-based hair care for textured, curly and natural hair. Formulated and manufactured in Uganda.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --espresso:#1C1A17;
+  --cream:#F5EFE4;
+  --cream-deep:#EDE3D2;
+  --amber:#C8703C;
+  --amber-dark:#A85826;
+  --nutmeg:#7A5C3E;
+  --moringa:#3D4A3A;
+  --honey:#E8B04B;
+  --paper:#FBF7EF;
+
+  --display:'Fraunces',Georgia,serif;
+  --body:'Outfit',system-ui,sans-serif;
+  --mono:'Space Mono',monospace;
+
+  --wrap:1240px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--body);
+  background:var(--cream);
+  color:var(--espresso);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+
+/* eyebrow motif — ingredient provenance thread */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--amber-dark);
+  display:inline-flex;
+  align-items:center;
+  gap:.7em;
+}
+.eyebrow::before{content:"";width:1.6rem;height:1px;background:var(--nutmeg);opacity:.6}
+
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.25rem,4vw,3rem);
+  transition:background .5s var(--ease),padding .5s var(--ease),box-shadow .5s var(--ease);
+}
+.nav.scrolled{
+  background:rgba(251,247,239,.88);
+  backdrop-filter:blur(14px);
+  padding:.7rem clamp(1.25rem,4vw,3rem);
+  box-shadow:0 1px 0 rgba(122,92,62,.14);
+}
+.nav__logo{display:flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:600;font-size:1.15rem;letter-spacing:.02em}
+.nav__logo img{width:34px;height:34px}
+.nav__links{display:flex;gap:2rem;align-items:center}
+.nav__links a{font-size:.9rem;font-weight:400;position:relative;padding:.2rem 0;transition:color .3s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--amber);transition:width .35s var(--ease)}
+.nav__links a:hover{color:var(--amber-dark)}
+.nav__links a:hover::after{width:100%}
+.nav__shop{
+  font-family:var(--body);font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--espresso);color:var(--cream);
+  padding:.6rem 1.4rem;border-radius:100px;
+  transition:transform .3s var(--ease),background .3s;
+}
+.nav__shop::after{display:none}
+.nav__shop:hover{background:var(--amber-dark);color:var(--cream);transform:translateY(-2px)}
+.nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:.4rem}
+.nav__burger span{width:24px;height:2px;background:var(--espresso);transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:6rem;padding-bottom:4rem;
+  overflow:hidden;
+}
+.hero__bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 90% at 78% 18%,rgba(200,112,60,.14),transparent 55%),
+    radial-gradient(100% 80% at 12% 92%,rgba(61,74,58,.10),transparent 50%),
+    var(--cream);
+}
+.hero__grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;width:100%;
+}
+.hero__copy{max-width:34rem}
+.hero__copy h1{
+  font-size:clamp(2.9rem,6.2vw,5.3rem);
+  margin:1.4rem 0 1.5rem;
+}
+.hero__copy h1 em{font-style:italic;color:var(--amber-dark);font-weight:400}
+.hero__lead{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--nutmeg);max-width:28rem;margin-bottom:2.2rem}
+.hero__cta{
+  display:inline-flex;align-items:center;gap:.8rem;
+  background:var(--amber);color:var(--paper);
+  font-weight:500;letter-spacing:.02em;
+  padding:1rem 2rem;border-radius:100px;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s;
+  box-shadow:0 10px 30px -12px rgba(200,112,60,.6);
+}
+.hero__cta svg{transition:transform .35s var(--ease)}
+.hero__cta:hover{background:var(--amber-dark);transform:translateY(-3px);box-shadow:0 18px 40px -14px rgba(200,112,60,.7)}
+.hero__cta:hover svg{transform:translateX(5px)}
+
+/* balance visual — the signature */
+.balance{position:relative;height:min(60vh,520px);display:flex;align-items:center;justify-content:center}
+.balance__mark{
+  width:min(46%,220px);aspect-ratio:1;border-radius:50%;
+  background:var(--paper);
+  box-shadow:0 30px 70px -30px rgba(28,26,23,.5),inset 0 0 0 1px rgba(122,92,62,.15);
+  display:grid;place-items:center;
+  position:relative;z-index:3;
+  animation:sway 7s var(--ease) infinite;
+}
+.balance__mark img{width:72%}
+@keyframes sway{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-10px) rotate(1.5deg)}}
+.balance__orbit{position:absolute;inset:0;z-index:2}
+.balance__pod{
+  position:absolute;border-radius:50%;overflow:hidden;
+  box-shadow:0 20px 40px -18px rgba(28,26,23,.55);
+  border:3px solid var(--paper);
+  will-change:transform;
+}
+.balance__pod img{width:100%;height:100%;object-fit:cover}
+.pod-1{width:118px;height:118px;top:2%;left:6%}
+.pod-2{width:96px;height:96px;top:8%;right:2%}
+.pod-3{width:130px;height:130px;bottom:4%;right:8%}
+.pod-4{width:88px;height:88px;bottom:2%;left:14%}
+.balance__line{
+  position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(var(--nutmeg),transparent);opacity:.25;transform:translateX(-50%);
+}
+
+/* ---------- MARQUEE STRIP ---------- */
+.strip{
+  background:var(--espresso);color:var(--cream);
+  padding:1.1rem 0;overflow:hidden;white-space:nowrap;
+  border-top:1px solid rgba(232,176,75,.2);border-bottom:1px solid rgba(232,176,75,.2);
+}
+.strip__track{display:inline-flex;gap:3.5rem;animation:scroll 34s linear infinite;font-family:var(--mono);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase}
+.strip__track span{display:inline-flex;align-items:center;gap:3.5rem;opacity:.85}
+.strip__track span::after{content:"✦";color:var(--honey)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- SECTION SHELL ---------- */
+.section{padding:clamp(5rem,10vw,8.5rem) 0}
+.section__head{max-width:44rem;margin-bottom:3.5rem}
+.section__head h2{font-size:clamp(2.1rem,4.5vw,3.4rem);margin:1.1rem 0 1rem}
+.section__head p{color:var(--nutmeg);font-size:1.08rem;max-width:34rem}
+
+/* ---------- PRODUCTS ---------- */
+.products{background:var(--paper)}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.6rem;
+}
+.card{
+  background:var(--cream);border-radius:20px;overflow:hidden;
+  border:1px solid rgba(122,92,62,.12);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+  display:flex;flex-direction:column;
+  will-change:transform;
+}
+.card:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 30px 55px -30px rgba(28,26,23,.4)}
+.card__media{aspect-ratio:4/5;overflow:hidden;background:var(--cream-deep);position:relative}
+.card__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.card:hover .card__media img{transform:scale(1.06)}
+.card__badge{
+  position:absolute;top:.9rem;left:.9rem;z-index:2;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(251,247,239,.92);color:var(--nutmeg);
+  padding:.35rem .7rem;border-radius:100px;
+}
+.card__body{padding:1.5rem 1.5rem 1.7rem;display:flex;flex-direction:column;flex:1}
+.card__body h3{font-size:1.35rem;margin-bottom:.6rem}
+.card__desc{font-size:.92rem;color:var(--nutmeg);flex:1;margin-bottom:1.2rem}
+.card__foot{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(122,92,62,.14)}
+.card__vol{font-family:var(--mono);font-size:.78rem;color:var(--espresso)}
+.card__link{font-size:.82rem;font-weight:500;color:var(--amber-dark);display:inline-flex;align-items:center;gap:.4rem;transition:gap .3s}
+.card__link:hover{gap:.75rem}
+
+/* ---------- PILLARS ---------- */
+.pillars{background:var(--moringa);color:var(--cream)}
+.pillars .eyebrow{color:var(--honey)}
+.pillars .eyebrow::before{background:var(--honey);opacity:.5}
+.pillars .section__head h2{color:var(--cream)}
+.pillars .section__head p{color:rgba(245,239,228,.72)}
+.pillar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2.5rem 2rem}
+.pillar{padding-top:1.5rem;border-top:1px solid rgba(232,176,75,.28)}
+.pillar__n{font-family:var(--mono);font-size:.75rem;color:var(--honey);letter-spacing:.1em}
+.pillar h3{font-size:1.5rem;margin:.9rem 0 .7rem;color:var(--cream)}
+.pillar p{font-size:.95rem;color:rgba(245,239,228,.75)}
+
+/* ---------- STORY ---------- */
+.story{background:var(--cream)}
+.story__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.story__seal{display:flex;justify-content:center}
+.story__seal img{
+  width:min(80%,320px);
+  filter:drop-shadow(0 25px 45px rgba(28,26,23,.28));
+  animation:sway 9s var(--ease) infinite;
+}
+.story__body h2{font-size:clamp(2rem,4vw,3rem);margin:1.2rem 0 1.5rem;max-width:20ch}
+.story__body p{color:var(--nutmeg);margin-bottom:1.2rem;font-size:1.05rem;max-width:46ch}
+.story__body .luo{color:var(--espresso);font-family:var(--display);font-style:italic}
+.story__link{
+  display:inline-flex;align-items:center;gap:.6rem;margin-top:.8rem;
+  font-weight:500;color:var(--espresso);border-bottom:2px solid var(--amber);padding-bottom:3px;
+  transition:gap .3s,color .3s;
+}
+.story__link:hover{gap:1rem;color:var(--amber-dark)}
+
+/* ---------- TESTIMONIALS ---------- */
+.love{background:var(--espresso);color:var(--cream);overflow:hidden}
+.love .eyebrow{color:var(--honey)}
+.love .eyebrow::before{background:var(--honey)}
+.love .section__head h2{color:var(--cream)}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.6rem}
+.quote{
+  background:rgba(245,239,228,.04);
+  border:1px solid rgba(232,176,75,.16);
+  border-radius:18px;padding:2rem 1.9rem;
+  transition:transform .5s var(--ease),background .5s;
+}
+.quote:hover{transform:translateY(-6px);background:rgba(245,239,228,.07)}
+.quote__mark{font-family:var(--display);font-size:3rem;line-height:.5;color:var(--amber);opacity:.7}
+.quote p{font-size:1.02rem;margin:1rem 0 1.4rem;color:rgba(245,239,228,.92)}
+.quote cite{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--honey);font-style:normal}
+
+/* ---------- CTA BAND ---------- */
+.band{
+  background:var(--amber);color:var(--paper);text-align:center;
+  padding:clamp(5rem,9vw,7rem) 0;position:relative;overflow:hidden;
+}
+.band__inner{position:relative;z-index:2;max-width:40rem;margin:0 auto}
+.band h2{font-size:clamp(2.2rem,5vw,3.6rem);color:var(--paper);margin:1.2rem 0 1.3rem}
+.band p{color:rgba(251,247,239,.9);font-size:1.1rem;margin-bottom:2.2rem}
+.band .eyebrow{color:var(--paper)}
+.band .eyebrow::before{background:rgba(251,247,239,.6)}
+.band__btn{
+  display:inline-flex;align-items:center;gap:.8rem;
+  background:var(--espresso);color:var(--cream);
+  padding:1.05rem 2.4rem;border-radius:100px;font-weight:500;letter-spacing:.02em;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+  box-shadow:0 15px 40px -15px rgba(28,26,23,.6);
+}
+.band__btn:hover{transform:translateY(-3px);box-shadow:0 22px 50px -18px rgba(28,26,23,.7)}
+.band__glow{position:absolute;inset:0;z-index:1;background:radial-gradient(60% 60% at 50% 120%,rgba(232,176,75,.5),transparent 60%)}
+
+/* ---------- FOOTER ---------- */
+.foot{background:var(--espresso);color:rgba(245,239,228,.72);padding:5rem 0 2.5rem}
+.foot__top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(245,239,228,.12)}
+.foot__brand img{width:52px;margin-bottom:1.2rem}
+.foot__brand p{font-size:.92rem;max-width:26ch}
+.foot h4{font-family:var(--body);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);margin-bottom:1.1rem}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.foot ul a{font-size:.92rem;transition:color .3s}
+.foot ul a:hover{color:var(--honey)}
+.foot__bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:rgba(245,239,228,.5);flex-wrap:wrap;gap:1rem}
+
+/* ---------- REVEAL ANIM ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+.reveal[data-d="4"]{transition-delay:.32s}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .nav__links{
+    position:fixed;inset:0 0 0 auto;width:min(78vw,320px);
+    background:var(--paper);flex-direction:column;justify-content:center;gap:2rem;
+    padding:2rem;transform:translateX(100%);transition:transform .45s var(--ease);
+    box-shadow:-20px 0 60px -20px rgba(28,26,23,.4);
+  }
+  .nav__links.open{transform:translateX(0)}
+  .nav__burger{display:flex}
+  .hero__grid{grid-template-columns:1fr;gap:2.5rem}
+  .balance{height:min(50vh,420px);order:-1}
+  .story__grid{grid-template-columns:1fr;gap:2.5rem}
+  .story__seal{order:-1}
+  .foot__top{grid-template-columns:1fr 1fr;gap:2rem}
+  .foot__brand{grid-column:1/-1}
+}
+@media(max-width:520px){
+  .foot__top{grid-template-columns:1fr}
+  .pod-2,.pod-4{display:none}
+  .hero__copy h1{font-size:clamp(2.5rem,10vw,3.5rem)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav__logo" href="#top">
+    <img src="assets/lengo-round-mark.png" alt="">Lengo
+  </a>
+  <div class="nav__links" id="menu">
+    <a href="#products">Products</a>
+    <a href="#story">Our Story</a>
+    <a href="samantha.html">Founder</a>
+    <a href="#contact">Contact</a>
+    <a href="#" class="nav__shop">Shop</a>
+  </div>
+  <button class="nav__burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__bg"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow reveal in">Nilotica Shea · Northern Uganda</span>
+      <h1 class="reveal in" data-d="1">Organic care for<br>textured, curly &amp; <em>natural</em> hair</h1>
+      <p class="hero__lead reveal in" data-d="2">Shea butter-based hair care, formulated and manufactured entirely in Uganda — made for cleansing, detangling, repair, and scalp care.</p>
+      <a href="#products" class="hero__cta reveal in" data-d="3">
+        Shop the Range
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M11 1l5 6-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="balance">
+      <div class="balance__line"></div>
+      <div class="balance__orbit" id="orbit">
+        <div class="balance__pod pod-1" data-speed="18"><img src="assets/lengo-shampoo.jpg" alt="Deep Cleansing Shampoo"></div>
+        <div class="balance__pod pod-2" data-speed="-24"><img src="assets/lengo-detangler.jpg" alt="Detangler Root Hair Spray"></div>
+        <div class="balance__pod pod-3" data-speed="14"><img src="assets/lengo-mask.jpg" alt="Leave-In Repair Mask"></div>
+        <div class="balance__pod pod-4" data-speed="-20"><img src="assets/lengo-oil.jpg" alt="Anti-Itch Scalp Oil"></div>
+      </div>
+      <div class="balance__mark">
+        <img src="assets/lengo-round-mark.png" alt="Lengo Organics">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip__track">
+    <span>Made in Uganda&nbsp;&nbsp;Nilotica Shea&nbsp;&nbsp;Scalp-First Care&nbsp;&nbsp;Beauty is Balance&nbsp;&nbsp;Cruelty-Free&nbsp;&nbsp;Est. 2019</span>
+    <span>Made in Uganda&nbsp;&nbsp;Nilotica Shea&nbsp;&nbsp;Scalp-First Care&nbsp;&nbsp;Beauty is Balance&nbsp;&nbsp;Cruelty-Free&nbsp;&nbsp;Est. 2019</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="section products" id="products">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow reveal">The Collection</span>
+      <h2 class="reveal" data-d="1">Five essentials, each doing one job well</h2>
+      <p class="reveal" data-d="2">Cleanse, detangle, repair, nourish, and soothe — a focused system that works in sequence, not competition.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card reveal" data-d="1">
+        <div class="card__media"><span class="card__badge">Cleanse</span><img src="assets/lengo-shampoo.jpg" alt="Deep Cleansing Shampoo"></div>
+        <div class="card__body">
+          <h3>Deep Cleansing Shampoo</h3>
+          <p class="card__desc">Gently cleanses &amp; moisturizes very dry, thick hair with pure shea oil, castor oil, guava leaf extract &amp; olive oil — controls frizz &amp; unwanted volume from dirt build-up.</p>
+          <div class="card__foot">
+            <span class="card__vol">500ml · 16.9 fl.oz</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-d="2">
+        <div class="card__media"><span class="card__badge">Detangle</span><img src="assets/lengo-detangler.jpg" alt="Detangler Root Hair Spray"></div>
+        <div class="card__body">
+          <h3>Detangler Root Spray</h3>
+          <p class="card__desc">Castor oil, shea oil, mango butter &amp; guava leaf extract. Applied to pre-shampooed, towel-dried hair to retain &amp; soften — regaining texture and ease of styling.</p>
+          <div class="card__foot">
+            <span class="card__vol">250ml · 8.8 fl.oz</span>
+            <a class="card__link" href="detangler.html">View →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-d="3">
+        <div class="card__media"><span class="card__badge">Repair</span><img src="assets/lengo-mask.jpg" alt="Leave-In Repair Mask"></div>
+        <div class="card__body">
+          <h3>Leave-In Repair Mask</h3>
+          <p class="card__desc">An intensive, deep-penetrating leave-in cream made with pure shea butter &amp; natural oils to stop &amp; mend breakage, repair split ends, and add manageability &amp; shine.</p>
+          <div class="card__foot">
+            <span class="card__vol">250ml · 8.8 fl.oz</span>
+            <a class="card__link" href="mask.html">View →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-d="1">
+        <div class="card__media"><span class="card__badge">Nourish</span><img src="assets/lengo-butter.jpg" alt="Growth Hair & Scalp Butter"></div>
+        <div class="card__body">
+          <h3>Growth Hair &amp; Scalp Butter</h3>
+          <p class="card__desc">Moisturizes, restores &amp; repairs dry, coarse, damaged hair. Shea &amp; mango butter with guava leaf extract, enriched with Vitamin E &amp; essential oils to promote healthy growth.</p>
+          <div class="card__foot">
+            <span class="card__vol">200g</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-d="2">
+        <div class="card__media"><span class="card__badge">Soothe</span><img src="assets/lengo-oil.jpg" alt="Anti-Itch Scalp Oil"></div>
+        <div class="card__body">
+          <h3>Anti-Itch Scalp Oil</h3>
+          <p class="card__desc">Peppermint &amp; shea oil that soothes the itch from braids, twists, locks and other natural hairstyles. Enriched with Vitamin E &amp; essential oils for lasting scalp comfort.</p>
+          <div class="card__foot">
+            <span class="card__vol">100ml · 3.4 fl.oz</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="section pillars">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow reveal">Why Lengo</span>
+      <h2 class="reveal" data-d="1">Rooted in place, made with purpose</h2>
+      <p class="reveal" data-d="2">Everything about Lengo comes back to one idea — that better hair care starts with better ingredients, honestly sourced.</p>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar reveal" data-d="1"><span class="pillar__n">01</span><h3>Made in Uganda</h3><p>Manufactured, labelled &amp; packaged entirely in Uganda — start to finish.</p></div>
+      <div class="pillar reveal" data-d="2"><span class="pillar__n">02</span><h3>Nilotica Shea</h3><p>Softer, less waxy shea butter sourced from Northern Uganda.</p></div>
+      <div class="pillar reveal" data-d="3"><span class="pillar__n">03</span><h3>Scalp-First</h3><p>Tea tree &amp; guava leaf care for scalps under wigs and weaves.</p></div>
+      <div class="pillar reveal" data-d="4"><span class="pillar__n">04</span><h3>Focused System</h3><p>Five essentials that work in sequence, not competition.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section story" id="story">
+  <div class="wrap story__grid">
+    <div class="story__seal reveal">
+      <img src="assets/lengo-round-mark.png" alt="Lengo Organics seal — Organic, Natural, Pure, a product of Uganda, est. 2019">
+    </div>
+    <div class="story__body">
+      <span class="eyebrow reveal">Our Story</span>
+      <h2 class="reveal" data-d="1">Made with heritage, precision, and purpose</h2>
+      <p class="reveal" data-d="2"><span class="luo">Lengo</span> means “beauty” in Luo, reflecting founder Samantha Okullo’s Northern Ugandan heritage and her belief that beauty is balance — the connection between how we care for ourselves and how we show up in the world.</p>
+      <p class="reveal" data-d="3">Founded in 2019, Lengo Organics grew from a personal search for better options for textured hair and scalp needs into a Ugandan-made hair care brand centered on organic, shea butter-based products.</p>
+      <a href="samantha.html" class="story__link reveal" data-d="3">Meet the Founder
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M11 1l5 6-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section love">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow reveal">Loved in the Routine</span>
+      <h2 class="reveal" data-d="1">Real messages from real customers</h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote reveal" data-d="1">
+        <div class="quote__mark">“</div>
+        <p>It has made my hair so thick and it’s amazing. My hair thinned a lot with blow drying — now it’s so compact and healthy. Thanks a lot!</p>
+        <cite>Verified customer · Instagram</cite>
+      </figure>
+      <figure class="quote reveal" data-d="2">
+        <div class="quote__mark">“</div>
+        <p>The Detangler is the best! My hair is super 4C and I was scared to comb or blow dry it, but I could comb and style it wet. It didn’t pain my hair at all.</p>
+        <cite>Aster · WhatsApp</cite>
+      </figure>
+      <figure class="quote reveal" data-d="3">
+        <div class="quote__mark">“</div>
+        <p>Moisturise, moisturise — and use @lengoorganics. They have amazing products to keep your hair healthy.</p>
+        <cite>@sandrakabanie · Instagram</cite>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band" id="contact">
+  <div class="band__glow"></div>
+  <div class="wrap band__inner">
+    <span class="eyebrow reveal">Ready for Balance?</span>
+    <h2 class="reveal" data-d="1">Begin with the essentials</h2>
+    <p class="reveal" data-d="2">Clean formulation, premium presentation, hair care proudly made in Uganda.</p>
+    <a href="#products" class="band__btn reveal" data-d="3">
+      Shop the Collection
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M11 1l5 6-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a href="#top"><img src="assets/lengo-round-mark.png" alt="Lengo Organics"></a>
+        <p>Organic, shea butter-based hair care for textured, curly and natural hair. Manufactured entirely in Uganda.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="samantha.html">Meet the Founder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:lengoorganics18@gmail.com">lengoorganics18@gmail.com</a></li>
+          <li><a href="tel:+256758604818">+256 758 604 818</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/lengoorganics/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/people/Lengo-Organics/100064016591459/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2025 Lengo Organics. All rights reserved.</span>
+      <span>Kampala, Uganda</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// mobile menu
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+// scroll reveal
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.15,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+// parallax pods
+const pods=[...document.querySelectorAll('.balance__pod')];
+let ticking=false;
+addEventListener('scroll',()=>{
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    const y=scrollY;
+    pods.forEach(p=>{const s=+p.dataset.speed;p.style.transform=`translateY(${y/s*-1}px)`});
+    ticking=false;
+  });
+},{passive:true});
+</script>
+</body>
+</html>
