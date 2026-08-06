@@ -1,0 +1,49 @@
+<!--
+  PRODUCT STRUCTURED DATA — DO NOT PASTE YET.
+
+  Add this ONLY once each product has a real checkout URL and price.
+  schema.org/Product with an Offer requires price + availability to be
+  eligible for rich results; publishing it with placeholder values can
+  trigger "unpriced" errors in Google Search Console, so wait.
+
+  HOW TO USE (per product page — mask.html shown as the example):
+    1. Fill in the [BRACKETED] values from the approved product label.
+    2. Paste the whole <script> block just before </head> on that page.
+    3. Test at https://search.google.com/test/rich-results before publishing.
+
+  Repeat for detangler.html with its own name, image, price and URL.
+  index.html and samantha.html do NOT get Product schema — index is a
+  collection/brand page (Organization schema would suit it better later),
+  and samantha.html is a person page (Person schema, also optional).
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Leave-In Conditioning Repair Mask",
+  "image": [
+    "https://lengo-organics.github.io/lengo/mask6.jpg"
+  ],
+  "description": "An intensive, deep-penetrating leave-in cream treatment made with pure shea butter to stop and mend breakage, repair split ends, and add manageability and shine.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Lengo Organics"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Lengo Organics",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "UG"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "[FULL CHECKOUT URL FOR THIS PRODUCT]",
+    "priceCurrency": "[e.g. UGX or USD]",
+    "price": "[e.g. 45000]",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+}
+</script>
