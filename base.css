@@ -1,0 +1,51 @@
+/* ============================================================
+   Lengo Organics — shared base styles
+   Used by the three subpages: mask.html, detangler.html, samantha.html
+   (index.html has its own separate design system and does NOT use this.)
+
+   ONLY structural rules that are identical across all three pages live
+   here — the reset, layout primitives, and the reveal animation. Anything
+   that carries colour (buttons, header, footer, .serif, hero gradients) or
+   page-specific dimensions stays in each page's own <style> block, after
+   the <link> to this file, so per-page palettes still win.
+   ============================================================ */
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; font-family:'Poppins',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased;}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+/* header / nav layout (colours are set per page) */
+.nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1180px; margin:0 auto;}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700;}
+.brand-mark{height:44px; width:44px; border-radius:50%;}
+nav.links{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
+
+/* buttons — shared geometry only; background/colour/shadow set per page */
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:13px 28px;
+  text-decoration:none;
+  font-weight:700; font-size:.85rem; letter-spacing:.02em; text-transform:uppercase;
+  border:none; border-radius:999px;
+  transition:transform .18s ease, background .18s ease;
+}
+.btn:hover{transform:translateY(-2px);}
+.hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+/* footer layout (colours per page) */
+.footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+.footer-links{display:flex; gap:22px; flex-wrap:wrap;}
+
+/* scroll-reveal animation — identical on every page */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+}
+
+/* shared responsive collapse */
+@media (max-width:900px){
+  nav.links{display:none;}
+}

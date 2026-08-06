@@ -25,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500;1,600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
 <style>
   /* Shares mask.html's dark/gold luxury register — the site's
      "deep-dive subpage" palette, as distinct from the pink/gold
@@ -38,25 +39,13 @@
     --cream:#F3ECDE;
     --muted:rgba(243,236,222,.72);
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
   body{margin:0; background:var(--night); color:var(--cream); font-family:'Poppins',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased;}
-  img{max-width:100%; display:block;}
-  a{color:inherit;}
   .serif{font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; color:var(--gold-soft);}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
   a:focus-visible, button:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-
-  @media (prefers-reduced-motion:no-preference){
-    .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease;}
-    .reveal.is-visible{opacity:1; transform:translateY(0);}
-  }
 
   header{position:sticky; top:0; z-index:50; background:rgba(20,27,41,.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(243,236,222,.1);}
   .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1180px; margin:0 auto;}
   .brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; color:var(--cream);}
-  .brand-mark{height:44px; width:44px; border-radius:50%;}
-  nav.links{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
   nav.links a{text-decoration:none; font-size:.85rem; font-weight:500; color:var(--muted);}
   nav.links a:hover{color:var(--gold-soft);}
   .btn{
@@ -79,7 +68,6 @@
   .hero-copy p.eyebrow{color:var(--gold-soft); font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; font-weight:600; margin:0 0 14px;}
   .hero-copy h1{font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; font-size:clamp(2.6rem,6vw,4.4rem); margin:0 0 10px; color:var(--cream);}
   .hero-copy p.role{font-size:1rem; color:var(--muted); margin:0 0 28px; max-width:50ch;}
-  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
 
   /* ---------- Quick facts ---------- */
   .facts{padding:64px 0; background:var(--night-deep); border-top:1px solid rgba(243,236,222,.08); border-bottom:1px solid rgba(243,236,222,.08);}
@@ -172,13 +160,10 @@
   .follow-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
 
   footer{background:var(--night-deep); padding:48px 0 28px; border-top:1px solid rgba(243,236,222,.08);}
-  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
   footer a{text-decoration:none; color:var(--muted); font-size:.85rem;}
   footer a:hover{color:var(--gold-soft);}
-  .footer-links{display:flex; gap:22px; flex-wrap:wrap;}
 
   @media (max-width:900px){
-    nav.links{display:none;}
     .facts .wrap{grid-template-columns:1fr 1fr; row-gap:28px;}
     .story .wrap, .style-section .wrap, .recognition .wrap{grid-template-columns:1fr; gap:36px;}
     .eco-grid{grid-template-columns:1fr 1fr; row-gap:20px;}
