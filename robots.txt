@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lengo-organics.github.io/lengo/sitemap.xml
