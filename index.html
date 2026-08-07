@@ -218,22 +218,24 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spac
 .section__head p{color:var(--nutmeg);font-size:1.1rem;font-weight:300;max-width:38rem}
 .section__head--center p{margin-left:auto;margin-right:auto}
 
-/* ============ ETHOS — roots & future, botanical ============ */
-.ethos{background:var(--ink);color:var(--ivory);overflow:hidden;position:relative}
+/* ============ ETHOS — roots & future, botanical (light) ============ */
+.ethos{background:var(--paper);color:var(--ink);overflow:hidden;position:relative}
 .ethos__pattern{position:absolute;inset:0;z-index:0;
   background:url('assets/botanical-pattern.webp');background-size:340px;
-  opacity:.06;mix-blend-mode:luminosity}
+  opacity:.05;mix-blend-mode:multiply}
 .ethos__inner{position:relative;z-index:2;display:grid;grid-template-columns:repeat(12,1fr);gap:2rem;align-items:center}
 .ethos__lead{grid-column:1/7}
-.ethos__lead .eyebrow{color:var(--gold-lite)}
-.ethos__lead h2{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:300;margin:1.4rem 0;color:var(--ivory)}
+.ethos__lead .eyebrow{color:var(--gold-deep)}
+.ethos__lead h2{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:300;margin:1.4rem 0;color:var(--ink)}
 .ethos__lead h2 em{font-style:italic}
-.ethos__quote{grid-column:8/13;border-left:1px solid rgba(184,135,61,.4);padding-left:2.4rem}
-.ethos__quote p{font-family:var(--display);font-size:clamp(1.4rem,2.4vw,2rem);font-weight:300;font-style:italic;line-height:1.35;color:rgba(247,241,230,.92)}
-.ethos__quote cite{display:block;margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lite);font-style:normal}
-.ethos__stats{grid-column:1/13;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(184,135,61,.24)}
+.ethos__quote{grid-column:8/13;border-left:1px solid rgba(184,135,61,.45);padding-left:2.4rem}
+.ethos__quote p{font-family:var(--display);font-size:clamp(1.4rem,2.4vw,2rem);font-weight:300;font-style:italic;line-height:1.35;color:var(--ink-soft)}
+.ethos__quote cite{display:block;margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-style:normal}
+.ethos__stats{grid-column:1/13;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(184,135,61,.3)}
 .stat__n{font-family:var(--display);font-size:clamp(2.4rem,4vw,3.4rem);font-weight:300;line-height:1}
-.stat__l{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,241,230,.6);margin-top:.7rem}
+.stat__l{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--nutmeg);margin-top:.7rem}
+/* foil reads richer on the light ethos background */
+.ethos .stat__n.foil{background:linear-gradient(105deg,#6E4E1B 0%,#8C6524 24%,#B8873D 50%,#C79A4B 60%,#8C6524 80%,#6E4E1B 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text}
 
 /* ============ COLLECTION ============ */
 .collection{background:var(--ivory)}
@@ -260,28 +262,28 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spac
 .card__link{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.5rem;transition:gap .35s}
 .card__link:hover{gap:.85rem}
 
-/* ============ FOUNDER — editorial ============ */
-.founder{background:var(--forest-deep);color:var(--ivory);overflow:hidden;position:relative}
+/* ============ FOUNDER — editorial (light) ============ */
+.founder{background:var(--ivory-deep);color:var(--ink);overflow:hidden;position:relative}
 .founder__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5.5rem);align-items:center}
 .founder__visual{position:relative}
 .founder__visual img{width:100%;border-radius:4px;filter:saturate(1.02)}
 .founder__visual::before{content:"";position:absolute;inset:-14px;border:1px solid rgba(184,135,61,.45);border-radius:4px;z-index:1;pointer-events:none}
 .founder__tag{position:absolute;bottom:1.4rem;left:1.4rem;z-index:2;background:rgba(21,17,13,.7);backdrop-filter:blur(8px);
-  padding:.9rem 1.3rem;border-radius:2px;border:1px solid rgba(184,135,61,.3)}
+  padding:.9rem 1.3rem;border-radius:2px;border:1px solid rgba(184,135,61,.3);color:var(--ivory)}
 .founder__tag b{display:block;font-family:var(--display);font-size:1.05rem;font-weight:500}
 .founder__tag span{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lite)}
-.founder__body .eyebrow{color:var(--gold-lite)}
+.founder__body .eyebrow{color:var(--gold-deep)}
 .founder__body h2{font-size:clamp(2.1rem,4.4vw,3.4rem);font-weight:300;margin:1.4rem 0 1.6rem}
 .founder__body h2 em{font-style:italic}
-.founder__body p{color:rgba(247,241,230,.78);font-size:1.06rem;font-weight:300;margin-bottom:1.3rem;max-width:44ch}
-.founder__body .luo{font-family:var(--display);font-style:italic;color:var(--gold-lite)}
-.founder__sign{font-family:var(--display);font-style:italic;font-size:1.6rem;margin:1.8rem 0 .3rem;color:var(--ivory)}
-.founder__role{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,241,230,.55)}
+.founder__body p{color:var(--nutmeg);font-size:1.06rem;font-weight:300;margin-bottom:1.3rem;max-width:44ch}
+.founder__body .luo{font-family:var(--display);font-style:italic;color:var(--gold-deep)}
+.founder__sign{font-family:var(--display);font-style:italic;font-size:1.6rem;margin:1.8rem 0 .3rem;color:var(--ink)}
+.founder__role{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--nutmeg)}
 .founder__link{display:inline-flex;align-items:center;gap:.7rem;margin-top:2rem;
-  font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-lite);
-  border-bottom:1px solid rgba(231,200,113,.45);padding-bottom:.4rem;transition:gap .4s var(--ease),border-color .4s}
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);
+  border-bottom:1px solid rgba(140,101,36,.45);padding-bottom:.4rem;transition:gap .4s var(--ease),border-color .4s}
 .founder__link svg{transition:transform .4s var(--ease)}
-.founder__link:hover{gap:1.1rem;border-color:var(--gold-lite)}
+.founder__link:hover{gap:1.1rem;border-color:var(--gold-deep)}
 .founder__link:hover svg{transform:translateX(5px)}
 
 /* ============ INGREDIENT / RITUAL SPLIT ============ */
@@ -298,19 +300,20 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spac
 .ritual__item p{font-size:.94rem;color:var(--nutmeg);font-weight:300}
 .ritual__visual img{width:100%;border-radius:4px;box-shadow:0 40px 70px -40px rgba(21,17,13,.6)}
 
-/* ============ TESTIMONIALS ============ */
-.love{background:var(--ink);color:var(--ivory);overflow:hidden;position:relative}
-.love__pattern{position:absolute;inset:0;z-index:0;background:url('assets/botanical-pattern.webp');background-size:400px;opacity:.05;mix-blend-mode:luminosity}
+/* ============ TESTIMONIALS (light) ============ */
+.love{background:var(--ivory);color:var(--ink);overflow:hidden;position:relative}
+.love__pattern{position:absolute;inset:0;z-index:0;background:url('assets/botanical-pattern.webp');background-size:400px;opacity:.045;mix-blend-mode:multiply}
 .love .section__head{position:relative;z-index:2}
-.love .eyebrow{color:var(--gold-lite)}
-.love .section__head h2{color:var(--ivory)}
+.love .eyebrow{color:var(--gold-deep)}
+.love .section__head h2{color:var(--ink)}
 .quotes{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.8rem}
-.quote{background:rgba(247,241,230,.035);border:1px solid rgba(184,135,61,.2);border-radius:4px;padding:2.4rem 2.1rem;
-  transition:transform .6s var(--ease),border-color .6s,background .6s}
-.quote:hover{transform:translateY(-8px);border-color:rgba(184,135,61,.5);background:rgba(247,241,230,.06)}
-.quote__stars{color:var(--gold-lite);font-size:.8rem;letter-spacing:.3em;margin-bottom:1.1rem}
-.quote p{font-family:var(--display);font-size:1.12rem;font-weight:300;line-height:1.5;margin-bottom:1.6rem;color:rgba(247,241,230,.94)}
-.quote cite{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lite);font-style:normal}
+.quote{background:var(--paper);border:1px solid rgba(184,135,61,.28);border-radius:4px;padding:2.4rem 2.1rem;
+  box-shadow:0 20px 50px -38px rgba(21,17,13,.35);
+  transition:transform .6s var(--ease),border-color .6s,box-shadow .6s}
+.quote:hover{transform:translateY(-8px);border-color:rgba(184,135,61,.6);box-shadow:0 30px 60px -36px rgba(21,17,13,.45)}
+.quote__stars{color:var(--gold);font-size:.8rem;letter-spacing:.3em;margin-bottom:1.1rem}
+.quote p{font-family:var(--display);font-size:1.12rem;font-weight:300;line-height:1.5;margin-bottom:1.6rem;color:var(--ink-soft)}
+.quote cite{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-style:normal}
 
 /* ============ GLOBAL AMBITION BAND ============ */
 .world{position:relative;overflow:hidden;color:var(--ivory);text-align:center;
@@ -529,7 +532,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spac
 <section class="section founder" id="founder">
   <div class="wrap founder__grid">
     <div class="founder__visual reveal">
-      <img src="assets/sam-white-power.jpg" alt="Samantha Okullo, founder of Lengo Organics">
+      <img src="assets/sam-samantha.jpg" alt="Samantha Okullo, founder of Lengo Organics">
       <div class="founder__tag"><b>Samantha Okullo</b><span>Founder &amp; Creative Director</span></div>
     </div>
     <div class="founder__body">
