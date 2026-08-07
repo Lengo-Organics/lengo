@@ -38,13 +38,13 @@
      Garamond italic + Poppins) for brand continuity.
      ============================================================ */
   :root{
-    --stone:#1C1712;        /* deep candlelit shadow */
-    --stone-deep:#100C08;   /* near-black base */
-    --clay:#C67B45;         /* warm terracotta glow */
-    --clay-soft:#E7A76B;    /* lit amber highlight */
-    --ember:#B4602F;        /* deeper burnt-orange */
-    --cream:#F4EADB;        /* warm paper cream */
-    --muted:rgba(244,234,219,.72);
+    --stone:#EFE7DF;        /* deep candlelit shadow */
+    --stone-deep:#E5DDD1;   /* near-black base */
+    --clay:#C08457;         /* warm terracotta glow */
+    --clay-soft:#C08457;    /* lit amber highlight */
+    --ember:#A96B3D;        /* deeper burnt-orange */
+    --cream:#33301F;        /* warm paper cream */
+    --muted:rgba(51,48,31,.70);
   }
   body{margin:0; background:var(--stone); color:var(--cream); font-family:'Poppins',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased;}
   .serif{font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500; color:var(--clay-soft);}
@@ -131,6 +131,64 @@
     .ritual .wrap, .ingredients .wrap{grid-template-columns:1fr; gap:36px;}
     .steps-grid{grid-template-columns:1fr;}
   }
+
+  /* ============================================================
+     ORGANIC LIGHT — shared palette override (added per Samantha's
+     brief: product pages should follow the light sage/cream/clay
+     reference template; nothing dark). Placed last so it wins over
+     each page's original photo-matched dark scheme. Structure,
+     copy, images and layout are unchanged.
+     ============================================================ */
+  body{background:#EFE7DF; color:#33301F;}
+  .serif{color:#A96B3D;}
+
+  /* hero: lighter, warmer scrim so the image reads bright, not murky */
+  .hero::after{background:linear-gradient(180deg, rgba(70,76,56,.06) 0%, rgba(70,76,56,.22) 52%, rgba(70,76,56,.66) 100%) !important;}
+  .hero-copy p.eyebrow{color:#E7C489 !important;}
+  .hero-copy h1{color:#FBF7EF !important;}
+  .hero-copy p.lede{color:rgba(251,247,239,.9) !important;}
+
+  /* alternating section backgrounds */
+  .ritual{background:#EFE7DF !important;}
+  .ingredients{background:#E5DDD1 !important;}
+  .ritual-steps{background:#EFE7DF !important;}
+  .ritual p, .ingredients p, .ritual-steps p{color:rgba(51,48,31,.70) !important;}
+
+  /* ingredient tags -> sage outline on cream */
+  .tag-list li{border:1px solid rgba(90,98,73,.45) !important; color:#464C38 !important; background:rgba(255,255,255,.45) !important; font-weight:600 !important;}
+  .formula-note{color:rgba(51,48,31,.70) !important;}
+  .size-badge{color:#33301F !important; background:rgba(255,255,255,.55) !important;}
+
+  /* how-to-use cards -> soft sage panels, visible on cream */
+  .step-card{background:#DCE0D2 !important; border:1px solid rgba(90,98,73,.28) !important;}
+  .step-num{color:#A96B3D !important;}
+  .step-card h3{color:#33301F !important;}
+  .step-card p{color:rgba(51,48,31,.70) !important;}
+
+  /* buttons -> clay (warm terracotta), matching the reference accents */
+  .btn{background:#A96B3D !important; color:#FBF7EF !important; box-shadow:0 16px 30px -14px rgba(169,107,61,.5) !important;}
+  .btn:hover{background:#8f5a33 !important;}
+  .btn.ghost{background:transparent !important; color:#33301F !important; border:1px solid rgba(51,48,31,.3) !important;}
+  .btn.ghost:hover{background:rgba(51,48,31,.06) !important;}
+
+  /* header -> translucent cream */
+  header{background:rgba(239,231,223,.9) !important; border-bottom:1px solid rgba(51,48,31,.1) !important;}
+  .brand{color:#33301F !important;}
+  nav.links a{color:#5A5238 !important;}
+  nav.links a:hover{color:#A96B3D !important;}
+
+  /* final CTA + footer -> ONE warm olive anchor (deep, not dark) with cream text */
+  .final{background:#5A6249 !important;}
+  .final p.serif{color:#E7C489 !important;}
+  .final p.sub{color:rgba(251,247,239,.82) !important;}
+  footer{background:#464C38 !important; border-top:1px solid rgba(251,247,239,.12) !important;}
+  footer a{color:rgba(251,247,239,.78) !important;}
+  footer a:hover{color:#E7C489 !important;}
+  footer span{color:rgba(251,247,239,.7) !important;}
+
+  /* break-caption text stays light — it sits on photography (unchanged intent) */
+  .break-caption p.serif{color:#FBF7EF !important;}
+
 </style>
 </head>
 <body>
